@@ -29,5 +29,5 @@
         "guzzlehttp/guzzle": "^7.0",
         "nyholm/psr7": "^1.4",
         "phpunit/phpunit": "^9.0"
-    },
+    }
 }
