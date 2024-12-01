@@ -5,7 +5,9 @@ namespace Nicodemuz\PhpGetImgAi;
 use Exception;
 use Nicodemuz\PhpGetImgAi\Dto\Model;
 use Nicodemuz\PhpGetImgAi\Request\ModelsRequest;
+use Nicodemuz\PhpGetImgAi\Request\TextToImageRequest;
 use Nicodemuz\PhpGetImgAi\Response\ModelsResponse;
+use Nicodemuz\PhpGetImgAi\Response\TextToImageResponse;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -41,6 +43,12 @@ class GetImgAiClient
     {
         $response = $this->request('GET', '/models/' . $id);
         return Model::fromArray($response);
+    }
+
+    public function textToImage(TextToImageRequest $request): TextToImageResponse
+    {
+        $response = $this->request('POST', '/' . $request->getModel() . '/text-to-image/', $request->toArray());
+        return TextToImageResponse::fromArray($response);
     }
 
     private function request(string $method, string $endpoint, ?array $params = null): array
