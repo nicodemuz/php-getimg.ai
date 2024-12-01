@@ -1,0 +1,33 @@
+{
+    "name": "nicodemuz/php-getimg.ai",
+    "description": "PHP SDK for GetImg.ai image generation service.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Nicodemuz\\PhpGetImgAi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nicodemuz\\PhpGetImgAi\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nico Hiort af Ornäs",
+            "email": "first-name@warpspeed.solutions"
+        }
+    ],
+    "require": {
+        "php": ">=8.3.0",
+        "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.0",
+        "psr/http-message": "^1.0"
+    },
+    "require-dev": {
+        "guzzlehttp/guzzle": "^7.0",
+        "nyholm/psr7": "^1.4",
+        "phpunit/phpunit": "^9.0"
+    },
+}
