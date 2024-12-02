@@ -132,4 +132,10 @@ If you encounter issues or have suggestions, feel free to [open an issue](https:
 
 ---
 
+## Authors
+
+* [Nico Hiort af Ornäs](https://github.com/nicodemuz)
+
+---
+
 ### 🌟 Happy Generating!
