@@ -6,6 +6,8 @@
 
 **nicodemuz/php-getimg.ai** is a modern, lightweight PHP library designed to integrate seamlessly with the [GetImg.ai](https://getimg.ai/) image generation API. Quickly generate stunning AI-powered images for your projects with just a few lines of code.
 
+This package is currently under development. There is only support for text-to-image generation. Pull requests for other features are welcome.
+
 ---
 
 ## Features 🚀
@@ -121,7 +123,7 @@ Contributions are welcome! To contribute:
 ---
 
 ## License 📜
-This library is open-sourced software licensed under the [MIT License](LICENSE).
+This library is open-sourced software licensed under the MIT License.
 
 ---
 
