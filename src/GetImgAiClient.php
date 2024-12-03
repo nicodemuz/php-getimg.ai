@@ -27,7 +27,7 @@ class GetImgAiClient
         string $apiKey,
         ClientInterface $httpClient,
         RequestFactoryInterface $requestFactory,
-        StreamFactoryInterface $streamFactory
+        StreamFactoryInterface $streamFactory,
     ) {
         $this->apiKey = $apiKey;
         $this->httpClient = $httpClient;
@@ -38,18 +38,21 @@ class GetImgAiClient
     public function getModels(ModelsRequest $request): ModelsResponse
     {
         $response = $this->request('GET', '/models', $request->toArray());
+
         return new ModelsResponse($response);
     }
 
     public function getModel(string $id): Model
     {
         $response = $this->request('GET', '/models/' . $id);
+
         return Model::fromArray($response);
     }
 
     public function textToImage(TextToImageRequest $request): TextToImageResponse
     {
         $response = $this->request('POST', '/' . $request->getModel() . '/text-to-image/', $request->toArray());
+
         return TextToImageResponse::fromArray($response);
     }
 
@@ -63,19 +66,20 @@ class GetImgAiClient
             ->withHeader('Content-Type', 'application/json')
         ;
 
-        if (!empty($params) && $method !== 'GET') {
+        if (!empty($params) && 'GET' !== $method) {
             $stream = $this->streamFactory->createStream(json_encode($params));
             $request = $request->withBody($stream);
         }
 
         $response = $this->httpClient->sendRequest($request);
+
         return $this->handleResponse($response);
     }
 
     private function handleResponse(ResponseInterface $response): array
     {
         $statusCode = $response->getStatusCode();
-        $body = (string)$response->getBody();
+        $body = (string) $response->getBody();
 
         if ($statusCode < 200 || $statusCode >= 300) {
             throw new Exception(sprintf('API request failed with status code %s: %s', $statusCode, $body));

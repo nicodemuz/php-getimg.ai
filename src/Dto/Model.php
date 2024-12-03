@@ -29,7 +29,7 @@ class Model
         float $price,
         string $authorUrl,
         string $licenseUrl,
-        DateTimeImmutable $created
+        DateTimeImmutable $created,
     ) {
         $this->id = $id;
         $this->name = $name;

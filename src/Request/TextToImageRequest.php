@@ -25,7 +25,7 @@ class TextToImageRequest
         int $steps = 4,
         ?int $seed = null,
         string $outputFormat = 'jpeg',
-        string $responseFormat = 'b64'
+        string $responseFormat = 'b64',
     ) {
         $this->setPrompt($prompt);
         $this->setModel($model);
@@ -79,7 +79,7 @@ class TextToImageRequest
 
     public function setSeed(?int $seed): void
     {
-        if ($seed !== null && ($seed < 1 || $seed > 2147483647)) {
+        if (null !== $seed && ($seed < 1 || $seed > 2147483647)) {
             throw new InvalidArgumentException('Seed must be between 1 and 2147483647.');
         }
         $this->seed = $seed;

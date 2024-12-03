@@ -9,7 +9,7 @@ readonly class TextToImageResponse
     public function __construct(
         private string $url,
         private int $seed,
-        private float $cost
+        private float $cost,
     ) {
     }
 
