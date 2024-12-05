@@ -68,6 +68,10 @@ class GetImgAiClient
     {
         $url = $this->baseUrl . $endpoint;
 
+        if (!empty($params) && 'GET' === $method) {
+            $url .= '?' . http_build_query($params);
+        }
+
         $request = $this->requestFactory->createRequest($method, $url)
             ->withHeader('Authorization', 'Bearer ' . $this->apiKey)
             ->withHeader('Accept', 'application/json')

@@ -29,7 +29,6 @@ class InpaintingRequest
         string $prompt,
         string $image,
         string $maskImage,
-        string $family = 'stable-diffusion-xl',
         string $model = 'stable-diffusion-xl-v1-0',
         ?string $negativePrompt = null,
         ?string $prompt2 = null,
@@ -37,7 +36,7 @@ class InpaintingRequest
         float $strength = 0.8,
         int $width = 1024,
         int $height = 1024,
-        int $steps = 4,
+        int $steps = 30,
         float $guidance = 7.5,
         ?int $seed = null,
         string $outputFormat = 'jpeg',
@@ -46,7 +45,6 @@ class InpaintingRequest
         $this->setPrompt($prompt);
         $this->setImage($image);
         $this->setMaskImage($maskImage);
-        $this->setFamily($family);
         $this->setModel($model);
         $this->setNegativePrompt($negativePrompt);
         $this->setPrompt2($prompt2);
@@ -107,7 +105,11 @@ class InpaintingRequest
 
     public function setModel(string $model): void
     {
-        if (!in_array($model, ['stable-diffusion-xl-v1-0'], true)) {
+        $family = $this->getModelFamilies()[$model] ?? null;
+
+        $this->family = $family;
+
+        if (!$family) {
             throw new InvalidArgumentException('Unsupported/untested model.');
         }
         $this->model = $model;
@@ -115,10 +117,22 @@ class InpaintingRequest
 
     public function setFamily(string $family): void
     {
-        if (!in_array($family, ['stable-diffusion-xl'], true)) {
+        $families = $this->getModelFamilies();
+
+        if (!in_array($family, $families, true)) {
             throw new InvalidArgumentException('Unsupported/untested family.');
         }
         $this->family = $family;
+    }
+
+    private function getModelFamilies(): array
+    {
+        return [
+            'stable-diffusion-xl-v1-0' => 'stable-diffusion-xl',
+            'realistic-vision-v5-1-inpainting' => 'stable-diffusion',
+            'stable-diffusion-v1-5-inpainting' => 'stable-diffusion',
+            'realistic-vision-v1-3-inpainting' => 'stable-diffusion',
+        ];
     }
 
     public function setStrength(float $strength): void
