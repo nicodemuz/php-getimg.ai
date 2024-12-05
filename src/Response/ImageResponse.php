@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Nicodemuz\PhpGetImgAi\Response;
 
-readonly class TextToImageResponse
+readonly class ImageResponse
 {
     public function __construct(
         private string $url,
