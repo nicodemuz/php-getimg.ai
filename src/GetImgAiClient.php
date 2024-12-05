@@ -59,7 +59,7 @@ class GetImgAiClient
 
     public function inpaint(InpaintingRequest $request): ImageResponse
     {
-        $response = $this->request('POST', '/' . $request->getModel() . '/inpaint', $request->toArray());
+        $response = $this->request('POST', '/' . $request->getFamily() . '/inpaint', $request->toArray());
 
         return ImageResponse::fromArray($response);
     }
