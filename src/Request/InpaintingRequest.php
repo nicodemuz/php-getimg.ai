@@ -219,7 +219,7 @@ class InpaintingRequest
             'response_format' => $this->responseFormat,
         ], function ($value) {
             // Keep all values except null
-            return $value !== null;
+            return null !== $value;
         });
     }
 
