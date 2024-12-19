@@ -12,8 +12,8 @@ class Model
     private string $name;
     private string $family;
     private array $pipelines;
-    private ?int $baseResolutionWidth;
-    private ?int $baseResolutionHeight;
+    private int $baseResolutionWidth;
+    private int $baseResolutionHeight;
     private float $price;
     private string $authorUrl;
     private string $licenseUrl;
