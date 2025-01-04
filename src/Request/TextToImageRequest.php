@@ -47,9 +47,6 @@ class TextToImageRequest
 
     public function setModel(string $model): void
     {
-        if (!in_array($model, ['flux-schnell'], true)) {
-            throw new InvalidArgumentException('Unsupported/untested model.');
-        }
         $this->model = $model;
     }
 
