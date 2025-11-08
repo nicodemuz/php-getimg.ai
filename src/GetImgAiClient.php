@@ -18,22 +18,14 @@ use Psr\Http\Message\StreamFactoryInterface;
 
 class GetImgAiClient
 {
-    private string $apiKey;
-    private ClientInterface $httpClient;
-    private RequestFactoryInterface $requestFactory;
-    private StreamFactoryInterface $streamFactory;
     private string $baseUrl = 'https://api.getimg.ai/v1';
 
     public function __construct(
-        string $apiKey,
-        ClientInterface $httpClient,
-        RequestFactoryInterface $requestFactory,
-        StreamFactoryInterface $streamFactory,
+        private readonly string $apiKey,
+        private readonly ClientInterface $httpClient,
+        private readonly RequestFactoryInterface $requestFactory,
+        private readonly StreamFactoryInterface $streamFactory
     ) {
-        $this->apiKey = $apiKey;
-        $this->httpClient = $httpClient;
-        $this->requestFactory = $requestFactory;
-        $this->streamFactory = $streamFactory;
     }
 
     public function getModels(ModelsRequest $request): ModelsResponse

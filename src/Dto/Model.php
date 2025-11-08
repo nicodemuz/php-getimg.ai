@@ -6,41 +6,20 @@ namespace Nicodemuz\PhpGetImgAi\Dto;
 
 use DateTimeImmutable;
 
-class Model
+readonly class Model
 {
-    private string $id;
-    private string $name;
-    private string $family;
-    private array $pipelines;
-    private int $baseResolutionWidth;
-    private int $baseResolutionHeight;
-    private float $price;
-    private string $authorUrl;
-    private string $licenseUrl;
-    private DateTimeImmutable $created;
-
     public function __construct(
-        string $id,
-        string $name,
-        string $family,
-        array $pipelines,
-        int $baseResolutionWidth,
-        int $baseResolutionHeight,
-        float $price,
-        string $authorUrl,
-        string $licenseUrl,
-        DateTimeImmutable $created,
+        private string $id,
+        private string $name,
+        private string $family,
+        private array $pipelines,
+        private int $baseResolutionWidth,
+        private int $baseResolutionHeight,
+        private float $price,
+        private string $authorUrl,
+        private string $licenseUrl,
+        private DateTimeImmutable $created
     ) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->family = $family;
-        $this->pipelines = $pipelines;
-        $this->baseResolutionWidth = $baseResolutionWidth;
-        $this->baseResolutionHeight = $baseResolutionHeight;
-        $this->price = $price;
-        $this->authorUrl = $authorUrl;
-        $this->licenseUrl = $licenseUrl;
-        $this->created = $created;
     }
 
     public static function fromArray(array $data): self

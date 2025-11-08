@@ -217,7 +217,7 @@ class InpaintingRequest
             'seed' => $this->seed,
             'output_format' => $this->outputFormat,
             'response_format' => $this->responseFormat,
-        ], function ($value) {
+        ], function ($value): bool {
             // Keep all values except null
             return null !== $value;
         });

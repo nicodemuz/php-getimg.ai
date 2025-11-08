@@ -4,15 +4,12 @@ declare(strict_types=1);
 
 namespace Nicodemuz\PhpGetImgAi\Request;
 
-class ModelsRequest
+readonly class ModelsRequest
 {
-    private ?string $family;
-    private ?string $pipeline;
-
-    public function __construct(?string $family = null, ?string $pipeline = null)
-    {
-        $this->family = $family;
-        $this->pipeline = $pipeline;
+    public function __construct(
+        private ?string $family = null,
+        private ?string $pipeline = null
+    ) {
     }
 
     public function toArray(): array
