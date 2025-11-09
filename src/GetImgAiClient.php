@@ -24,7 +24,7 @@ class GetImgAiClient
         private readonly string $apiKey,
         private readonly ClientInterface $httpClient,
         private readonly RequestFactoryInterface $requestFactory,
-        private readonly StreamFactoryInterface $streamFactory
+        private readonly StreamFactoryInterface $streamFactory,
     ) {
     }
 
@@ -60,7 +60,7 @@ class GetImgAiClient
     {
         $url = $this->baseUrl . $endpoint;
 
-        if (!empty($params) && 'GET' === $method) {
+        if (!empty($params) && $method === 'GET') {
             $url .= '?' . http_build_query($params);
         }
 
@@ -70,7 +70,7 @@ class GetImgAiClient
             ->withHeader('Content-Type', 'application/json')
         ;
 
-        if (!empty($params) && 'GET' !== $method) {
+        if (!empty($params) && $method !== 'GET') {
             $stream = $this->streamFactory->createStream(json_encode($params));
             $request = $request->withBody($stream);
         }

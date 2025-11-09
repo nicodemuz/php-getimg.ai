@@ -18,7 +18,7 @@ readonly class Model
         private float $price,
         private string $authorUrl,
         private string $licenseUrl,
-        private DateTimeImmutable $created
+        private DateTimeImmutable $created,
     ) {
     }
 

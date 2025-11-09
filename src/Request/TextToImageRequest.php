@@ -76,7 +76,7 @@ class TextToImageRequest
 
     public function setSeed(?int $seed): void
     {
-        if (null !== $seed && ($seed < 1 || $seed > 2147483647)) {
+        if ($seed !== null && ($seed < 1 || $seed > 2147483647)) {
             throw new InvalidArgumentException('Seed must be between 1 and 2147483647.');
         }
         $this->seed = $seed;

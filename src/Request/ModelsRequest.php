@@ -8,7 +8,7 @@ readonly class ModelsRequest
 {
     public function __construct(
         private ?string $family = null,
-        private ?string $pipeline = null
+        private ?string $pipeline = null,
     ) {
     }
 
