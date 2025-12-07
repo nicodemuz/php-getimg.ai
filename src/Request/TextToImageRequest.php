@@ -9,12 +9,19 @@ use InvalidArgumentException;
 class TextToImageRequest
 {
     private string $prompt;
+
     private string $model;
+
     private int $width;
+
     private int $height;
+
     private int $steps;
+
     private ?int $seed;
+
     private string $outputFormat;
+
     private string $responseFormat;
 
     public function __construct(

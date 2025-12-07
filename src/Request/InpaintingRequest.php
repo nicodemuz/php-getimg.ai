@@ -9,20 +9,35 @@ use InvalidArgumentException;
 class InpaintingRequest
 {
     private string $prompt;
+
     private string $image;
+
     private string $maskImage;
+
     private string $family;
+
     private string $model;
+
     private ?string $negativePrompt;
+
     private ?string $prompt2;
+
     private ?string $negativePrompt2;
+
     private float $strength;
+
     private int $width;
+
     private int $height;
+
     private int $steps;
+
     private float $guidance;
+
     private ?int $seed;
+
     private string $outputFormat;
+
     private string $responseFormat;
 
     public function __construct(
